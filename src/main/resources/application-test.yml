@@ -1,0 +1,28 @@
+logging:
+  file: taskmgmt.log
+  pattern:
+    level: '%X{tenantId} %5p'
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/taskmgmt_demo?useSSL=false
+    username: root
+    password: password
+    tomcat:
+      max-wait: 10000
+      max-active: 100
+      test-on-borrow: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        ddl-auto: update # Hibernate ddl auto (create, create-drop, validate, update)
+        cache:
+          use_second_level_cache: true
+
+  jmx:
+    default-domain: task-mgmt
